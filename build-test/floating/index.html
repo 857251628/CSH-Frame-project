@@ -1,0 +1,60 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+  <head>
+  <title>漂浮广告</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<link rel="stylesheet" href="css/ad.css"></link >
+	<script src="../images/jquery-1.8.3.min.js" charset="UTF-8"></script>
+	<script type="text/javascript" src="../images/TRS.frame-v1.0.0.js" charset="UTF-8"></script>
+
+	<script type="text/javascript">
+	$(function(){
+		
+		TRS.floatingAd({
+			//频率
+			delay: 10,
+			//超链接后是否关闭漂浮
+			isLinkClosed: true,
+			//漂浮内容
+			ad:	[{
+				//关闭区域背景透明度(0.1-1)
+				headFilter: 1,
+				//图片
+				'pic': [{
+					'img': 'images/t1.gif',
+					//图片高度
+					'imgHeight': 109,
+					//图片宽度
+					'imgWidth': 169,
+					//图片链接
+					'linkUrl': 'javascript:;',
+					//浮动层级别
+					'z-index': 100,
+					//标题
+					'title': '321'
+				},{
+					'img': 'images/t2.gif',
+					//图片高度
+					'imgHeight': 109,
+					//图片宽度
+					'imgWidth': 169,
+					//图片链接
+					'linkUrl': 'javascript:;',
+					//浮动层级别
+					'z-index': 100,
+					//标题
+					'title': '123'
+				},{}]
+			}],
+			//关闭事件
+			onClose: function(elem){
+			
+			}
+		});
+		
+	});
+	</script>
+  </head>
+  <body style="height: 1000px;width: 2000px;">
+  </body>
+</html>

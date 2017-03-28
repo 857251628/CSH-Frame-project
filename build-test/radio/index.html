@@ -1,0 +1,128 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title></title>
+
+<!-- START Plugin CSS -->
+<style type="text/css">
+	html{
+		font-size:12px;	
+	}
+	.control{
+		width:600px;
+		border:1px solid #000;
+		padding:10px;
+		margin:0 auto;
+	}
+	.main_header{
+		border:1px solid blue;
+		height:100px
+	}
+	.main_body{
+		border:1px solid red;
+		height:500px
+	}
+	.main_footer{
+		border:1px solid #ccc;
+		height:100px
+	}
+	.main_header,.main_body,.main_footer{
+		margin-bottom:5px;
+	}
+	.radioContent{
+		border:1px solid;
+		margin:5px;
+		overflow:hidden;
+	}
+	.radioContent input{
+		display:none;
+	}
+	.radioContent .radioWrapper {
+		float: left;
+		display: block;
+		margin: 0px 4px;
+		margin-top: 5px;
+	}
+	.radioContent .radio {
+		background: transparent url(trs_radio.gif) no-repeat center top;
+		vertical-align: middle;
+		height: 19px;
+		width: 18px;
+		display: block;
+	}
+	.radioContent a.radioChecked {
+		background-position: center -21px;
+	}
+</style>
+<!-- END Plugin CSS -->
+
+</head>
+<body>
+	<div class="control js_control">
+		<!-- START header -->
+		<div class="main_header" >
+			header
+		</div>
+		<!-- END header -->
+		<!-- START body -->
+		<div class="main_body">
+			无回调函数
+			<div class="radioContent js_radio">
+				<input type="radio" name="radio1" checked="checked" value="radio1" />
+				<input type="radio" name="radio1" value="radio2" />
+				<input type="radio" name="radio1" value="radio3" />
+				<input type="radio" name="radio1" value="radio4" />
+				<input type="radio" name="radio1" value="radio5" />
+				<input type="radio" name="radio1" value="radio6" />
+			</div>
+			<br/><br/><br/>
+			
+			
+			<div class="radioContent" id="js_radio">
+				<input type="radio" name="radio2" value="radio1" />
+				<input type="radio" name="radio2" value="radio2" />
+				<input type="radio" name="radio2" value="radio3" />
+				<input type="radio" name="radio2" value="radio4" />
+				<input type="radio" name="radio2" value="radio5"  checked="checked" />
+			</div>
+			<input type="radio" name="radio2" value="radio1" />
+			<a href="javascript:aa();">获取值</a>
+		</div>
+		<!-- END body -->
+		<!-- START footer -->
+		<div class="main_footer">
+			footer
+		</div>
+		<!-- END footer -->
+	</div>
+	
+	<!-- START Plugin JS -->
+		<script type="text/javascript"  src="../images/jquery-1.8.3.min.js" charset="UTF-8"></script>
+		<script type="text/javascript" src="../images/TRS.frame-v1.0.0.js" charset="UTF-8"></script>
+		<script type="text/javascript">
+			TRS.Radio({
+				param:$('.js_radio'),		//选择器
+				classWrap:'radioWrapper',	//外层样式
+				classRadio:'radio',			//按钮样式
+				classChecked:'radioChecked'	//按钮选中样式
+			});
+			
+			//带回调函数
+			TRS.Radio({
+				param:$('#js_radio'),			//选择器
+				classWrap:'radioWrapper',		//外层样式
+				classRadio:'radio',				//按钮样式
+				classChecked:'radioChecked',	//按钮选中样式
+				onComplete	:function($this){	//回调函数，点击按钮后执行
+					alert('回调函数');
+				}
+			});
+			
+			function aa(){
+				$('.main_header').html('选中的<br />值1：' +　$(".js_radio").find('input:radio:checked').val() + '<br />值2：' + $("#js_radio").find('input:radio:checked').val());
+			}
+		</script>
+	<!-- END Plugin JS -->
+</body>
+</html>

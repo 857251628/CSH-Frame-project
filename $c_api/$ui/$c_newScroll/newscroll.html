@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>NewScroll</title>
+    <style type="text/css">
+        ul, li {
+            margin: 0;
+            padding: 0;
+            list-style-type: none;
+        }
+        body{
+            overflow: hidden;
+        }
+        .news_scroll {
+            height: 50px;
+            width: 133px;
+            float: left;
+            overflow: hidden;
+
+        }
+        .news_scroll2{
+            overflow: hidden;
+            float: left;
+        }
+        .news_scroll2 li {
+            height: 50px;
+            width: 108px;
+            float: left;
+            background:url("http://i0.sinaimg.cn/home/2014/1030/hxjzg103.jpg")no-repeat ;
+        }
+        .news_scroll2 li a{
+           display: inline-block;
+            height: 50px;
+            width: 108px;
+        }
+        .news_scroll ul {
+            overflow: hidden;
+        }
+        .news_scroll li {
+            height: 50px;
+            width: 133px;
+            float: left;
+            position: relative;
+        }
+        .news_scroll li a{
+            height: 50px;
+            width: 133px;
+            position: absolute;
+        }
+
+    </style>
+    <script src="../../../$c_global_entrance.js"></script>
+    <!--//导入Jquery-->
+    <!--   <script src="https://code.jquery.com/jquery-3.2.0.min.js"></script>
+       <script src="$c_newScroll.js"></script>-->
+</head>
+
+
+<body>
+<div class="news_scroll2">
+    <ul>
+        <li><a href="http://news.sina.com.cn/pc/2014-10-30/326/3095.html"></a></li>
+    </ul>
+
+</div>
+<div id="js_news_scroll" class="news_scroll">
+    <ul>
+        <li>
+            <a href="http://news.sina.com.cn/z/wljbxz"  target="_blank"></a>
+            <img src="http://i2.sinaimg.cn/home/2014/1030/jb5.jpg">
+        </li>
+        <li>
+            <a href="http://www.12377.cn/node_548446.htm" target="_blank"></a>
+            <img src="http://n.sinaimg.cn/www/index/12377app.png">
+        </li>
+        <li>
+            <a href="http://jubao.china.cn:13225/reportform.do" target="_blank";></a>
+            <img src="http://i3.sinaimg.cn/home/main/index2013/0509/bkjb.png">
+        </li>
+        <li>
+            <a href="http://jubao.12377.cn:13225/reportsitetitle.do" target="_blank"></a>
+            <img src="http://n.sinaimg.cn/default/1e20c22f/20161223/titlejbicon.png">
+
+        </li>
+        <li>
+            <a href="http://jubao.12377.cn:13225/reportinputcommon.do" target="_blank";></a>
+            <img src="http://n.sinaimg.cn/default/1e20c22f/20170314/WangShangYouHaiXinXiJuBaoZhuanQu.jpg">
+
+        </li>
+    </ul>
+</div>
+
+
+<script type="text/javascript">
+
+    $(function () {
+        var scroll = $("#js_news_scroll");
+        var context = {
+             imagerSrc:["http://i2.sinaimg.cn/home/2014/1030/jb5.jpg",
+                 "http://n.sinaimg.cn/www/index/12377app.png",
+                 "http://i3.sinaimg.cn/home/main/index2013/0509/bkjb.png",
+                 "http://n.sinaimg.cn/default/1e20c22f/20161223/titlejbicon.png" ,
+                 "http://n.sinaimg.cn/default/1e20c22f/20170314/WangShangYouHaiXinXiJuBaoZhuanQu.jpg"],
+            href:["http://news.sina.com.cn/z/wljbxz",
+                "http://www.12377.cn/node_548446.htm",
+                "http://jubao.china.cn:13225/reportform.do",
+                "http://jubao.12377.cn:13225/reportsitetitle.do" ,
+                "http://jubao.12377.cn:13225/reportinputcommon.do"]
+        };
+        $c.$ui_newScroll({
+            id: scroll,                 //设置要滚动的大盒子
+            context:context,            //要传递的对象,里面有2个数组 imagerSrc[]   href[]
+            direction: "top",            //设置滚动方向("top" 和"left")
+            distance: 50,				//要滚动距离
+            sliding_time: 500,     //滚动时间
+            time: 1000	//等待时间
+        });
+    })
+</script>
+</body>
+
+</html>

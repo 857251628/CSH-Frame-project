@@ -1,0 +1,196 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title></title>
+
+<!-- START Plugin CSS -->
+<style type="text/css">
+	html{
+		font-size:12px;	
+	}
+	.control{
+		width:600px;
+		border:1px solid #000;
+		padding:10px;
+		margin:0 auto;
+	}
+	.main_header{
+		border:1px solid blue;
+		height:100px
+	}
+	.main_body{
+		border:1px solid red;
+		height:500px
+	}
+	.main_footer{
+		border:1px solid #ccc;
+		height:100px
+	}
+	.main_header,.main_body,.main_footer{
+		margin-bottom:5px;
+	}
+	
+	.selected {
+		padding-bottom: 0px;
+		padding-left: 0px;
+		width: 71px;
+		padding-right: 0px;
+		background: url(shcs_wza12.gif) no-repeat 0px 0px;
+		float: left;
+		height: 24px;
+		color: #666;
+		margin-left: 6px;
+		padding-top: 0px;
+	}
+	.selected select{
+		display:none;
+	}
+	.selected .tag_select {
+		text-align: left;
+		padding-bottom: 0px;
+		line-height: 24px;
+		padding-left: 8px;
+		width: 71px;
+		padding-right: 0px;
+		display: block;
+		background: url(shcs_wza12.gif) no-repeat 0px 0px;
+		height: 24px;
+		font-size: 12px;
+		cursor: pointer;
+		padding-top: 0px;
+	}
+	.selected .tag_select_hover {
+		background: url(shcs_wza12.gif) no-repeat 0px 0px; color: rgb(0,0,0); 
+		font-size: 12px
+	}
+	.selected .tag_select_open {
+		background: url(shcs_wza12.gif) no-repeat 0px 0px; color: rgb(0,0,0); 
+		font-size: 12px
+	}
+	.selected ul.tag_options {
+		z-index: 1000;
+		border-bottom: 1px solid;
+		position: absolute;
+		border-left: 1px solid;
+		padding-bottom: 1px;
+		overflow-y: auto;
+		list-style-type: none;
+		margin: 0px;
+		padding-left: 0px;
+		width: 69px;
+		padding-right: 0px;
+		background: rgb(255,255,255);
+		height: auto;
+		font-size: 12px;
+		overflow: hidden;
+		border-top: 0px;
+		cursor: pointer;
+		list-style-image: none;
+		border-right: 1px solid;
+		padding-top: 0px;
+	}
+	
+	.selected ul.tag_options li {
+		text-align: left;
+		padding-bottom: 0px;
+		line-height: 25px;
+		padding-left: 8px;
+		width: 69px;
+		padding-right: 0px;
+		display: block;
+		background: rgb(255,255,255);
+		height: 25px;
+		color: rgb(125,125,125);
+		font-size: 12px;
+		font-weight: normal;
+		text-decoration: none;
+		padding-top: 0px;
+	}
+	.selected ul.tag_options li.open_hover {
+		background: rgb(241,241,241); color: rgb(0,0,0); 
+		font-size: 12px; 
+		font-weight: normal
+	}
+	
+
+</style>
+<!-- END Plugin CSS -->
+
+</head>
+<body>
+	<div class="control js_control">
+		<!-- START header -->
+		<div class="main_header" >
+			header
+		</div>
+		<!-- END header -->
+		<!-- START body -->
+		<div class="main_body">
+			无回调函数
+			<div class="selected" >
+				<select title="选择栏目" name="sType" class="select1" id="selected1" >
+					<option value="全部">全部</option>
+					<option  selected="selected" value="信息公开" >信息公开</option>
+					<option value="纳税服务" >纳税服务</option>
+					<option value="税收宣传" >税收宣传</option>
+					<option value="公众参与" >公众参与</option>
+				</select>
+			</div>
+			<br/><br/><br/>
+			带回调函数
+			<div class="selected"  >
+				<select title="选择栏目" name="sType"  class='select1' id="selected2" >
+					<option selected="selected" value="全部">全部</option>
+					<option value="信息公开" >信息公开</option>
+					<option value="纳税服务" >纳税服务</option>
+					<option value="税收宣传" >税收宣传</option>
+					<option value="公众参与" >公众参与</option>
+				</select>
+			</div>
+			<br/><br/><br/>
+			<a href="javascript:aa();">获取</a>
+		</div>
+		<!-- END body -->
+		<!-- START footer -->
+		<div class="main_footer">
+			footer
+		</div>
+		<!-- END footer -->
+	</div>
+	
+	<!-- START Plugin JS -->
+		<script type="text/javascript"  src="../images/jquery-1.8.3.min.js" charset="UTF-8"></script>
+		<script type="text/javascript" src="../images/TRS.frame-v1.0.0.js" charset="UTF-8"></script>
+		<script type="text/javascript"> 
+		
+			TRS.Select({
+				param:$("#selected1"),		//选择器
+				classHover:'open_hover',	//选项选中状态效果
+				classOpen:'tag_select_open',//选项打开状态效果
+				classSelect:'tag_select',	//选项框class样式
+				classOption:'tag_options'	//选项框class样式
+			});
+			
+			TRS.Select({
+				param:$("#selected2"),		//选择器
+				classHover:'open_hover',	//选项选中状态效果
+				classOpen:'tag_select_open',//选项打开状态效果
+				classSelect:'tag_select',	//选项框class样式
+				classOption:'tag_options',	//选项框class样式
+				onComplete:function(){		//回调函数
+					alert('回调函数')
+				}
+				
+			});
+			
+			function aa(){
+				$('.main_header').html('选中的<br />值1：' +　$(".select1").val() + '<br />值2：' + $("#selected2").val());
+			}
+			
+			
+			
+		</script>
+	<!-- END Plugin JS -->
+</body>
+</html>

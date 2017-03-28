@@ -1,0 +1,115 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>海尔家电家居-美好住居生活解决方案提供商</title>
+
+<link rel="stylesheet" type="text/css" href="images/detail.css">
+
+<!-- END 自定义 head -->
+
+</head>
+<body>
+
+      
+     
+      <!-- START 产品信息 -->
+      <div id="product_detail_pannel"> 
+        <!-- START 左侧图片 -->
+        <div class="l js_pd_small_gallery">
+			<div class="pic_mid js_pic_mid">
+				<img class="js_pic_mid_img" src="images/pl_product_detail_pic_m_01.jpg" width="405" height="405" alt="" />
+				<span class="mask_mag js_show_gallery"></span>
+			</div>
+          <div class="small_gallery">
+			<!--START products scroll-->
+				<div class="product_scroll">
+					<div class="container">
+						<div class="product_item js_scroll_products">
+							<ul>
+								<li><a href="javascript:;" rel="images/pl_product_detail_pic_l_01.jpg"><img src="images/product.jpg" alt=""></a></li>  
+																					 
+								<li><a href="javascript:;" rel="images/pl_product_detail_pic_l_02.jpg" ><img src="images/product.jpg" alt=""></a></li>  
+																					 
+								<li><a href="javascript:;" rel="images/pl_product_detail_pic_l_01.jpg"><img src="images/product.jpg" alt=""></a></li>  
+																					 
+								<li><a href="javascript:;" rel="images/pl_product_detail_pic_l_02.jpg"><img src="images/product.jpg" alt=""></a></li>  
+																					 
+								<li><a href="javascript:;" rel="images/pl_product_detail_pic_l_01.jpg"><img src="images/product.jpg" alt=""></a></li>  
+																					 
+								<li><a href="javascript:;" rel="images/pl_product_detail_pic_l_02.jpg"><img src="images/product.jpg" alt=""></a></li>  
+																					 
+								<li><a href="javascript:;" rel="images/pl_product_detail_pic_l_01.jpg"><img src="images/product.jpg" alt=""></a></li>  
+																					 
+								<li><a href="javascript:;" rel="images/pl_product_detail_pic_l_02.jpg"><img src="images/product.jpg" alt=""></a></li>
+							 </ul>
+						</div>
+						<div class="btn_scroll_prev js_scroll_prev"><a href="javascript:;" class="icon_scroll_btn"></a></div>
+						<div class="btn_scroll_next js_scroll_next"><a href="javascript:;" class="icon_scroll_btn"></a></div>
+					</div>
+				</div>
+				<!-- END products scroll -->
+			</div>
+        </div>
+        <!-- END 左侧图片 --> 
+        
+        
+        
+        <!-- START gallery -->
+        <div class="gallery js_pd_gallery">
+          <div class="window">
+            <div class="stage js_stage"><img src="images/pl_product_detail_pic_l_01.jpg" width="1200" height="1200" alt="" /></div>
+          </div>
+          <div class="thumbs">
+            <div class="thumbs_window">
+              <ul class="js_thumbs">
+                <li data-image_l="images/pl_product_detail_pic_l_01.jpg"><a href="#"><img src="images/pl_product_detail_pic_s_01.jpg" width="65" height="65" alt="" /></a></li>
+                <li data-image_l="images/pl_product_detail_pic_l_02.jpg"><a href="#"><img src="images/pl_product_detail_pic_s_02.jpg" width="65" height="65" alt="" /></a></li>
+                <li data-image_l="images/pl_product_detail_pic_l_01.jpg"><a href="#"><img src="images/pl_product_detail_pic_s_03.jpg" width="65" height="65" alt="" /></a></li>
+                <li data-image_l="images/pl_product_detail_pic_l_02.jpg"><a href="#"><img src="images/pl_product_detail_pic_s_04.jpg" width="65" height="65" alt="" /></a></li>
+                <li data-image_l="images/pl_product_detail_pic_l_01.jpg"><a href="#"><img src="images/pl_product_detail_pic_s_05.jpg" width="65" height="65" alt="" /></a></li>
+                <li data-image_l="images/pl_product_detail_pic_l_02.jpg"><a href="#"><img src="images/pl_product_detail_pic_s_06.jpg" width="65" height="65" alt="" /></a></li>
+                <li data-image_l="images/pl_product_detail_pic_l_01.jpg"><a href="#"><img src="images/pl_product_detail_pic_s_07.jpg" width="65" height="65" alt="" /></a></li>
+                <li data-image_l="images/pl_product_detail_pic_l_02.jpg"><a href="#"><img src="images/pl_product_detail_pic_s_08.jpg" width="65" height="65" alt="" /></a></li>
+                <li data-image_l="images/pl_product_detail_pic_l_01.jpg"><a href="#"><img src="images/pl_product_detail_pic_s_05.jpg" width="65" height="65" alt="" /></a></li>
+                <li data-image_l="images/pl_product_detail_pic_l_02.jpg"><a href="#"><img src="images/pl_product_detail_pic_s_06.jpg" width="65" height="65" alt="" /></a></li>
+                <li data-image_l="images/pl_product_detail_pic_l_01.jpg"><a href="#"><img src="images/pl_product_detail_pic_s_07.jpg" width="65" height="65" alt="" /></a></li>
+                <li data-image_l="images/pl_product_detail_pic_l_02.jpg"><a href="#"><img src="images/pl_product_detail_pic_s_08.jpg" width="65" height="65" alt="" /></a></li>
+              </ul>
+            </div>
+            <div class="btn_prev slider_btn_prev_m"><a href="javascript:;" class="js_prev" style="cursor: pointer;">上一张</a></div>
+            <div class="btn_next slider_btn_next_m"><a href="javascript:;" class="js_next" style="cursor: pointer;">下一张</a></div>
+          </div>
+          <div class="control">
+            <div class="btn_plus js_plus"><a href="javascript:;">放大</a></div>
+            <div class="bar js_bar">
+              <div class="track js_track">
+                <div class="bar_dot js_bar_dot">
+                  <div></div>
+                </div>
+              </div>
+            </div>
+            <div class="btn_minus js_minus"><a href="javascript:;">缩小</a></div>
+          </div>
+          <div class="btn_close"> <a href="javascript:;" class="js_gallery_close">关闭</a> </div>
+        </div>
+        <!-- END gallery --> 
+        
+      </div>
+      <!-- END 产品信息 -->
+      
+    <hr />
+	
+
+
+
+<script src="../images/jquery-1.8.3.min.js" charset="UTF-8"></script>
+<script type="text/javascript" src="../images/TRS.frame-v1.0.0.min.js" charset="UTF-8"></script>
+<script src="images/jquery.mousewheel.js"></script>
+
+<script type="text/javascript"> 
+	TRS.imgZoom();
+</script>
+
+</body>
+</html>

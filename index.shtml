@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta content="text/html; charset=UTF-8" http-equiv="content-type" />
+    <meta charset="utf-8" >
+    <title>TRSFrame 1.0.0</title>
+   
+   <style type="text/css">
+	.body{clear:both;margin:0 auto; width:1100px}
+	em{font-weight:bold;}
+   	.section{
+   		width:330px;
+   		height:600px;
+   		margin:15px 10px 0 10px;
+		padding: 0px 0px 0px 10px;
+   		border-right:1px solid #005AAA;
+   		float:left;
+   	}
+	ul,li{padding: 0px 0px;margin:0 ;}
+	ul{margin-top:20px;}
+   	
+   </style>
+</head>
+<body class="body">
+<br/>
+<div class="section">
+    <div id="hd" >
+
+        <div >
+            <em>TRSFrame API Docs for: 1.0.0</em>
+        </div>
+    </div>
+    <div id="bd" >
+		<div>
+			<hr/>
+			特别说明:<br />
+			<hr/>
+			<font color="red">
+				<b>
+					线上项目：
+					TRS.frame-v1.0.5.min.js版本以下不可以直接升级版本库
+				</b>
+			</font>	
+		</div>
+		<ul class="tabs">
+             <li><a href="./api/fixed/index.html">层定位(Plugin fixed)</a></li>
+			 <li><a href="./api/scroll/index_scroll.html">图片滚动(Plugin scroll)</a></li>
+             <li><a href="./api/validators/index.html">表单验证(Plugin validators)</a></li>
+			 <li><a href="./api/popup/index.html">弹出层(Plugin popup)</a></li>
+			 <li><a href="./api/tools/index.html">获取URL参数(Plugin tools)</a></li>
+             <li><a href="./api/tab/index.html">选项卡切换(Plugin tab)</a></li>
+			 <li><a href="./api/carousel/index.html">轮播图(Plugin carousel)</a></li>
+			 <li><a href="./api/paging/index.html">分页面效果(Plugin pagination)</a></li>
+        </ul>
+    </div>
+    </div>
+    
+    
+ <div class="section">
+    <div >
+        <div >
+            <em>TRSFrame Build Docs for: 1.0.0</em>
+        </div>
+    </div>
+    <div>
+		<ul class="tabs2">
+			<li><a href="./build-test/tools/index.html">获取URL参数(Plugin tools)</a></li>
+			<li><a href="./build-test/tools/index2.html">去字符串空格(Plugin tools)</a></li>
+			<li><a href="./build-test/tools/index3.html">去除HTML标签(Plugin tools)</a></li>
+			<li><a href="./build-test/select/index.html">Select 重写效果(Plugin tools)</a></li>
+			<li><a href="./build-test/radio/index.html">Radio 重写效果(Plugin tools)</a></li>
+			<li><a href="./build-test/scroll/index_scroll.html">图片滚动(Plugin scroll)</a></li>
+			<li><a href="./build-test/tab/index.html">选项卡切换(Plugin tab)</a></li>
+			<li><a href="./build-test/carousel/index.html">轮播图(Plugin carousel)</a></li>
+			<li><a href="./build-test/paging/index.html">分页面效果(Plugin pagination)</a></li>
+			<li><a href="./build-test/floating/index.html">(图片浮动效果)Plugin floating</a></li>
+			<li><a href="./build-test/focusMap/index.html">(焦点图效果)Plugin focusMap</a></li>
+			<li><a href="./build-test/imageZoom/imgZoom.shtml">(图片放大缩小功能)Plugin imgZoom</a></li>
+			<li><a href="./build-test/starLevel/starLevel.html">(星星评分效果)Plugin starLevel</a></li>
+			<li><a href="./build-test/newsScroll/newsScroll.html">(滚动新闻效果)Plugin newsScroll</a></li>
+			<li><a href="./build-test/sidebar/index.html">(左侧导航)Plugin sidebar</a></li>
+			
+        </ul>
+    </div>
+    </div>
+    
+    <div class="section">
+    <div >
+        <div >
+            <em>TRSFrame Plugin Build Docs for: 1.0.0</em>
+        </div>
+    </div>
+    <div  >
+		<ul class="tabs">
+            <li><a href="./build-test/fixed/index.html">层定位(Plugin fixed)</a></li>
+			<li><a href="./build-test/validators/index.html">表单验证(Plugin validators)</a></li>
+			<li><a href="./build-test/popup/index.html">弹出层(Plugin popup)</a></li>
+			<li><a href="./build-test/pie/index.html">(IE支持CSS3属性方法1)Plugin PIE 1.0</a></li>
+			<li><a href="./build-test/pie2/index.html">(IE支持CSS3属性方法2)Plugin PIE 2.0</a></li>
+			<li><a href="./build-test/FlexPaper/index.html">(仿百度文库查看PDF)Plugin FlexPaper</a></li>
+			<li><a href="./build-test/My97DatePicker/index.html">(My97DatePicker)Plugin My97DatePicker</a></li>
+        </ul>
+    </div>
+    </div>
+</body>
+</html>

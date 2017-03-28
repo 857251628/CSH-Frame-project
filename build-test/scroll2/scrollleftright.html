@@ -1,0 +1,191 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>scroll</title>
+<link type="text/css" rel="stylesheet" href="../images/scroll_leftright.css"/>
+
+</head>
+<body>
+		<!--START products scroll-->
+		<div class="product_scroll">
+            <div class="container">
+                <div class="product_item js_scroll_products">
+                    <ul>
+						<li><a href="#"><img src="../images/product.jpg" alt=""><span class="product_name">冰箱冷柜</span></a></li>  
+						 
+                        <li><a href="#"><img src="../images/product.jpg" alt=""><span class="product_name">洗衣机</span></a></li>  
+						 
+                        <li><a href="#"><img src="../images/product.jpg" alt=""><span class="product_name">空调</span></a></li>  
+						 
+                        <li><a href="#"><img src="../images/product.jpg" alt=""><span class="product_name">热水器</span></a></li>  
+						 
+                        <li><a href="#"><img src="../images/product.jpg" alt=""><span class="product_name">彩电</span></a></li>  
+						 
+                        <li><a href="#"><img src="../images/product.jpg" alt=""><span class="product_name">厨电厨房</span></a></li>  
+						 
+                        <li><a href="#"><img src="../images/product.jpg" alt=""><span class="product_name">电脑手机及数码</span></a></li>  
+						 
+                        <li><a href="#"><img src="../images/product.jpg" alt=""><span class="product_name">生活家电</span></a></li>
+                     </ul>
+                </div>
+                <div class="btn_scroll_prev js_scroll_prev"><a href="javascript:;" class="icon_scroll_btn"></a></div>
+                <div class="btn_scroll_next js_scroll_next"><a href="javascript:;" class="icon_scroll_btn"></a></div>
+            </div>
+        </div>
+        <!-- END products scroll -->
+        
+        <script type="text/javascript" src="../images/jquery-1.8.3.min.js" charset="UTF-8"></script>
+		<script type="text/javascript" src="../images/TRS.frame-v1.0.0.js" charset="UTF-8"></script>
+		
+		<script type="text/javascript">
+		
+			
+/*
+ method productScroll v1.0.0
+ =================================
+
+ Infomation
+ ----------------------
+ Author : renchengxiang
+ E-Mail : ren.chengxiang@trs.com.cn
+ Date : 2014-02-10
+ Readme:scroll products
+
+ Example
+ ----------------------
+ options:	//get configed parameters
+ 
+
+ Supported in Internet Explorer, Mozilla Firefox,Chrome
+ */
+
+	$.fn.productScroll = function(options){
+		//scrollnum 每次单击滚动个数 ; timer 鼠标左右指向移动多长时间滚动到尽头毫秒; hidebtn 没有滚动对象之后是否隐藏按钮 1 隐藏  0 不隐藏;prevclassname 单击向左的class名   nextclassname 单击向右的class名  scrolldirect:滚动方向  0 左右滚动  1 上下滚动 
+		//scrollnum: scroll num per click    timer:how time to scroll to the end    hidebtn:if hide button when no scroll products  1 is hide;0 is show  prevclassname:the classname of the left/top button   nextclassname:the classname of the right buttton  scrolldirect：scroll direction  0 is left right  1 is top down  istoscroll：if scroll when mouse over 1 scroll 0 not scroll
+		var defaults={scrollnum:1,timer:4000,hidebtn:1,prevclassname:"js_scroll_prev",nextclassname:"js_scroll_next",scrolldirect:0,istoscroll:1};
+		$.extend(defaults,options);
+		return this.each(function(){
+			var $scrollRoot=$(this);//滚动div//scroll div
+			var $scrollItem = $scrollRoot.find("ul");//滚动ul//scroll ul
+			var $prev = $scrollRoot.parent().find("."+defaults.prevclassname);//左侧按钮prev //left button prev
+			var $next = $scrollRoot.parent().find("."+defaults.nextclassname);//右侧按钮next //right button next
+			var rootW = $scrollRoot.width();//滚动容器宽度 // the width of the scroll container
+			if(defaults.scrolldirect){//如果 上下滚动 // if scroll top down
+				rootW=$scrollRoot.height();//滚动容器高度// the height of the scroll container
+			}
+			var rootX = $scrollRoot.offset().left;
+			if(defaults.scrolldirect){//如果 上下滚动 // if scroll top down
+				rootX =$scrollRoot.offset().top;
+			}
+			var listLen = $scrollItem.find("li").size();//需要滚动li个数   //the length of the li
+			var listW=$scrollItem.find("li").eq(0).outerWidth();// 一个滚动单位的宽度  //the width of one li
+			if(defaults.scrolldirect){//如果 上下滚动 // if scroll top down
+				listW=$scrollItem.find("li").eq(0).outerHeight();// 一个滚动单位的高度度  //the height of one li
+			}
+			var scrollwPerClick=listW*defaults.scrollnum;//每次单击滚动宽度  //scroll width per click button
+			var slideW = listW*listLen - rootW;	
+			var direction = 0;	// 0: 表示向左,  1: 表示向右   //0  is  to left   1 is to right
+			
+			
+			
+			$prev.click(function(){
+				if ($scrollItem.filter(':animated').length) return;
+
+				var $this = $(this);
+				var curLeft = parseFloat($scrollItem.css("left"));
+				if(defaults.scrolldirect){//如果 上下滚动 // if scroll top down
+					curLeft = parseFloat($scrollItem.css("top"));
+				}
+				var posX = curLeft+scrollwPerClick;
+				$next.show();//可能设置的被隐藏了，因此需要显示 // it may be hide so should be show
+				if(curLeft <= "-" + scrollwPerClick){
+					if(defaults.scrolldirect){//如果 上下滚动 // if scroll top down
+						$scrollItem.animate({
+							"top": posX
+						},300);
+					}else{// 左右滚动  left right scroll
+						$scrollItem.animate({
+							"left": posX
+						},300);
+					}
+				}else{
+					if(defaults.hidebtn){//隐藏按钮 //hide the button
+						$this.hide();
+					}
+					if(defaults.scrolldirect){//如果 上下滚动 // if scroll top down
+						$scrollItem.animate({
+							"top": 0
+						},300);
+					}else{// 左右滚动  left right scroll
+						$scrollItem.animate({
+							"left": 0
+						},300);
+					}
+				}
+			});
+			
+			$next.click(function(){
+				if ($scrollItem.filter(':animated').length) return;
+				
+				var $this = $(this);
+				var curLeft = parseFloat($scrollItem.css("left"));
+				if(defaults.scrolldirect){//如果 上下滚动 // if scroll top down
+					curLeft = parseFloat($scrollItem.css("top"));
+				}
+				isNaN(curLeft) && (curLeft = 0);
+				var posX = curLeft -scrollwPerClick;
+
+				$prev.show();//可能设置的被隐藏了，因此需要显示 // it may be hide so should be show
+				if((listW*listLen + curLeft) >= (rootW + 1 + scrollwPerClick)){
+					if(defaults.scrolldirect){//如果 上下滚动 // if scroll top down
+						$scrollItem.animate({
+							"top": posX
+						},300);
+					}else{// 左右滚动  left right scroll
+						$scrollItem.animate({
+							"left": posX
+						},300);
+					}
+				}else{
+					if(defaults.hidebtn){//隐藏按钮 //hide the button
+						$this.hide();
+					}
+					if(defaults.scrolldirect){//如果 上下滚动 // if scroll top down
+						$scrollItem.animate({
+							"top": "-" + slideW
+						},300);
+					}else{// 左右滚动  left right scroll
+						$scrollItem.animate({
+							"left": "-" + slideW
+						},300);
+					}
+				}
+			});
+			
+			
+			
+		});
+	};
+		
+		var Scroll=function(idobj,scrollnum,timer,hidebtn,prevclassname,nextclassname,scrolldirect,istoscroll){
+		if(!idobj){
+			alert("idobj is null");
+			return false;
+		}
+		idobj.productScroll({
+			scrollnum:scrollnum,
+			timer:timer,
+			hidebtn:hidebtn,
+			prevclassname:prevclassname,
+			nextclassname:nextclassname,
+			scrolldirect:scrolldirect
+		});
+	};
+		
+			$(function(){
+				Scroll($(".js_scroll_products"),1,3000,1,"js_scroll_prev","js_scroll_next",0);
+			});
+		</script>
+</body>
+</html>

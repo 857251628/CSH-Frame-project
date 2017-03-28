@@ -1,0 +1,20 @@
+/*
+html{
+ _background-image: url(about:blank);
+ 背景图片是否随着鼠标的移动而移动
+ _background-attachment: fixed;
+}
+*/
+.c-fixed_fix{
+ position:fixed; z-index:2000;display:block
+}
+.c-fixed_top{top:0px;margin-top:0px;}
+.c-fixed_bottom{bottom:0px;}
+.c-fixed_left{left:0px;}
+.c-fixed_right{right:0px;}
+.c-fixed_center{left:50%;}
+.c-fixed_middle{top:50%;}
+
+/**html .qd_fix{
+  position:absolute;
+}*/

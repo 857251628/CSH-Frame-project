@@ -1,0 +1,704 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<!-- saved from url=(0024)http://fancybox.net/api/ -->
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en" class="cufon-active cufon-ready"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	
+	<meta http-equiv="imagetoolbar" content="no">
+	<title>Fancybox - Fancy jQuery lightbox alternative| API &amp; Options</title>
+	<style type="text/css">
+		/*
+Theme Name: FancyBox Theme
+Theme URI: http://fancybox.net
+Description: Custom Theme for the FancyBox Homepage
+Version: 1.0
+Author: Janis Skarnelis
+Author URI: http://fancybox.net
+*/
+html, body, div, dl, dt, dd, ul, li, h1, h2, h3, h4, pre, form, fieldset, p, blockquote, th, td, img, a {
+	margin: 0;
+	padding: 0;
+	border: 0;
+}
+
+html, body {
+	height: 100%;
+}
+
+body {
+	color: #3e3e3e;
+	font: normal 12px Verdana,"lucida console",sans-serif;
+	
+}
+
+.clear {
+	clear: both;
+	font-size: 1px;
+	line-height: 1px;
+}
+
+h2 {
+	font-size: 16px;
+	font-family: "Lucida Grande",Helvetica,Arial,sans-serif;
+	font-weight: bold;
+	margin-bottom: 5px;
+}
+
+a {
+	color: #15081F;
+	text-decoration: underline;
+	outline: none;
+}
+
+a:hover {
+	color: #C73B7C;
+}
+
+#page {
+	width: 860px;
+	margin: 0 auto;
+}
+
+#header {
+	height: 110px;
+}
+
+#header h1 {
+	float: left;
+	margin-left: 20px;
+	margin-top: 15px;
+}
+
+#header h1 a {
+	color: #fff;
+	text-decoration: none;
+	font-size: 30px;
+}
+
+#header ul {
+	float: right;
+	margin-top: 33px;
+}
+
+#header ul li {
+	display: inline;
+	padding-left: 27px;
+	padding-bottom: 10px;
+}
+
+#header ul li a {
+	color: #FFF;
+	font-size: 13px;
+	font-family: Arial;
+	text-decoration: none;
+	text-shadow: 1px 1px 1px #222222;
+	position: relative;
+}
+
+#header ul li a.active, #header ul li a:hover {
+	border-bottom: 1px solid #FFF;
+}
+
+#col_wrap {
+	min-height: 610px;
+	background: #F9F9F7 url('/img/bg_col_right.gif') top right repeat-y;
+}
+
+#col_top {
+	background: url('/img/bg_col.gif') top left no-repeat;
+	height: 10px;
+	line-height: 1;
+	font-size: 1px;
+}
+
+#col_sep {
+	background: url('/img/bg_col_sep.gif') bottom left no-repeat;
+	padding: 17px 0;
+}
+
+#col_left {
+
+	width: 860px;
+	padding: 20px 0 20px 30px;
+}
+
+#col_left h1 {
+	font-family: Tahoma;
+	font-size: 26px;
+	font-weight: normal;
+	color: #872651;
+	margin-top: 10px;
+	margin-bottom: 15px;
+}
+
+#col_left h1 span {
+	font-size: 20px;	
+}
+
+#col_left p {
+	padding-bottom: 15px;
+	margin: 0;
+	line-height: 22px;
+}
+
+#col_left img {
+	padding: 5px;
+	background: white;
+	border: 1px solid #BBB;
+	margin: 7px 14px 7px 0;
+	width: 160px;
+}
+
+#col_left ul {
+	padding: 0;
+	margin: -10px 0 15px 30px;
+}
+
+#col_left ul li {
+	line-height: 25px;
+}
+
+table.options {
+	border-left: 1px solid #E2E2E2;
+	margin-bottom: 15px;
+}
+
+table.options th {
+	background: #15081F;
+	color: #fff;
+	padding: 10px;
+	text-align: left;
+	font-weight: normal;
+	border-right: 1px solid #3B224F;
+	border-bottom: 1px solid #3B224F;
+}
+
+table.options td {
+	padding: 7px 10px;
+	border-right: 1px solid #DDD;
+	border-bottom: 1px solid #DDD;
+	line-height: 1.6;
+}
+
+table.options tr.even {
+	background: #E9E9E9;
+}
+
+table.options tr.sep td {
+	border-bottom: 1px solid #BBB;
+}
+
+#col_right {
+    float: right;
+	width: 230px;
+	text-align: center;
+}
+
+#col_right h2 {
+	margin-bottom: 10px;	
+}
+
+#col_right p {
+	text-align: left;
+	padding-left: 20px;
+	line-height: 24px;
+	font-size: 12px;
+}
+
+#adblock {
+	margin-top: 20px;
+	margin-left: 25px;
+	width: 130px;
+	padding: 0;
+	text-align: left;
+}
+
+.advertise {
+	font-size: 10px;	
+	padding-left: 15px;
+}
+
+body .one .bsa_it_ad{background:transparent;border:none;padding:0;margin:0;}
+body .one .bsa_it_ad:hover img{-moz-box-shadow:0 0 3px #000;-webkit-box-shadow:0 0 3px #000;box-shadow:0 0 3px #000;}
+body .one .bsa_it_ad .bsa_it_i{display:block;padding:0;float:none;margin:0 0 5px;}
+body .one .bsa_it_ad .bsa_it_i img{padding:0;border:none;}
+body .one .bsa_it_ad .bsa_it_t{padding:6px 0 0 0;}
+body .one .bsa_it_p{display:none;}
+body #bsap_aplink,body #bsap_aplink:hover{display:block;font-size:10px;margin:12px 0 0;}
+
+
+#col_bottom {
+	height: 10px;
+	background: url('/img/bg_col.gif') bottom left no-repeat;
+	line-height: 1;
+	font-size: 1px;
+}
+
+#footer {
+	color: #FFF;
+	padding: 10px 30px 50px 30px;
+}
+
+#footer p {
+	font-size: 11px;
+	line-height: 20px;
+}
+
+#footer p a {
+	color: #FFF;
+}
+
+#footer p a:hover {
+	color: #BBB;
+}
+
+#col_left pre {
+	padding: 0;
+	margin: 0;
+	margin-bottom: 10px;
+	line-height: 20px;
+	background: #15081F;
+	width: 570px;
+	overflow: auto; 
+	overflow-Y: hidden;
+}
+
+#col_left pre code {
+	margin: 0 0 0 15px;
+	padding: 16px 0;
+	display: block;
+	color: #FFF;
+	font: normal 11px/18px Verdana,Sans-Serif;
+}
+
+#col_left pre code a {
+	color: #FFF;	
+}
+
+#col_left .faq {
+	padding: 10px 0;
+}
+
+#col_left .faq strong {
+	display: block;
+	padding: 10px;
+	color: #FFF;
+	background: #270B2B;
+	font-weight: normal;
+}
+
+#col_left .faq p {
+	padding: 10px;
+	background: #FFF;
+}
+
+#col_left ul.list {
+	list-style: none;
+	margin-top: -10px;
+	margin-left: 10px;
+}
+
+#col_left ul.list li {
+	background: url('/img/bullet.gif') 0 6px no-repeat;
+	padding-left: 20px;
+}
+
+#col_left .list {
+	margin-bottom: 25px;
+}
+
+#col_left .list .h {
+	font-weight: bold;
+	background: #F3F3F3;
+	border-top: 1px solid #E2E2E2;
+	border-bottom: 1px solid #E2E2E2;
+	padding: 12px 7px;
+	color: #555;
+	margin-bottom: 15px;
+}
+
+#col_left .list p {
+	padding : 0 10px 10px 10px;
+}
+
+#faq .list .h {
+	margin-bottom: 10px;	
+}
+
+#faq .list {
+	margin-bottom: 5px;	
+}
+
+.right {
+	float: right;
+}
+
+.note {
+	padding: 20px 0 0 0;
+}
+
+small {
+	font-size: 10px;
+}
+
+#social {
+	float: right;
+	padding-right: 20px;	
+}
+
+#social a {
+	margin-left: 2px;	
+}
+
+#social a img {
+	padding-top: 4px;
+}
+
+.warn {
+	padding: 10px 10px 0 10px;
+	background-color: #FFFFCC;
+	border: 1px solid #CCCCAA;
+	margin-right: 30px;
+	margin-bottom: 25px;
+	-moz-border-radius: 5px;
+}
+
+/*
+*   Some CSS for examples
+*/
+object, embed {
+	vertical-align: top;	
+}
+
+#login_error {
+	display: none;
+	background: red;
+	color: #FFF;
+}
+
+form label {
+	display: block;
+}
+
+form p {
+	padding: 7px;
+	line-height: 1.6;
+}
+
+#inline1 {
+    overflow: auto;
+	width: 500px;
+	height: 100px;
+	background-color: #FDFDFD;
+}
+
+#page #inline1 {
+	display: none;
+}
+
+#page #inline2 {
+	display: none;
+}
+
+#tip7-title {
+    text-align: left;
+}
+
+#tip7-title b {
+    display: block;
+    margin-right: 80px;
+}
+
+#tip7-title span {
+    float: right;
+}
+
+	</style>
+<body>
+
+
+
+	 		
+			<div id="col_left" style="margin:0 auto;">
+	            
+
+
+<table class="options" border="1" cellpadding="6" cellspacing="0" style="color:#000000; font-family:Arial; font-size:14px; line-height:26px; text-align:left; ">
+<thead>
+<tr class="even">
+<th width="120"><span style="font-size:13px">属性名</span></th>
+<th width="120"><span style="font-size:13px">默认值</span></th>
+<th><span style="font-size:13px">简要说明</span></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>padding</td>
+<td>10</td>
+<td>浏览框内边距，和css中的padding一个意思</td>
+</tr>
+<tr class="even">
+<td>margin</td>
+<td>20</td>
+<td>浏览框外边距，和css中的margin一个意思</td>
+</tr>
+<tr>
+<td>opacity</td>
+<td>false</td>
+<td>如果为true，则fancybox在动画改变的时候透明度可以跟着改变</td>
+</tr>
+<tr class="even">
+<td>modal</td>
+<td>false</td>
+<td>如果为true，则'overlayShow' 会被设成 'true' ， 'hideOnOverlayClick', 'hideOnContentClick', 'enableEscapeButton', 'showCloseButton' 会被设成 'false'</td>
+</tr>
+<tr>
+<td>cyclic</td>
+<td>false</td>
+<td>如果为true，相册会循环播放</td>
+</tr>
+<tr class="sep even">
+<td>scrolling</td>
+<td>'auto'</td>
+<td>设置overflow的值来创建或隐藏滚动条，可以设置成 'auto', 'yes', or 'no'</td>
+</tr>
+<tr>
+<td>width</td>
+<td>560</td>
+<td>设置iframe和swf的宽度，如果 'autoDimensions'为 'false'，这也可以设置普通文本的宽度</td>
+</tr>
+<tr class="sep even">
+<td>height</td>
+<td>340</td>
+<td>设置iframe和swf的高度，如果 'autoDimensions'为 'false'，这也可以设置普通文本的高度</td>
+</tr>
+<tr>
+<td>autoScale</td>
+<td>true</td>
+<td>如果为true，fancybox可以自适应浏览器窗口大小</td>
+</tr>
+<tr class="even">
+<td>autoDimensions</td>
+<td>true</td>
+<td>在内联文本和ajax中，设置是否动态调整元素的尺寸，如果为true，请确保你已经为元素设置了尺寸大小</td>
+</tr>
+<tr class="sep">
+<td>centerOnScroll</td>
+<td>false</td>
+<td>如果为true，当你滚动滚动条时，fancybox将会一直停留在浏览器中心</td>
+</tr>
+<tr class="even">
+<td>ajax</td>
+<td>{ }</td>
+<td>和jquery的ajax调用选项一样<br>
+注意: 'error' and 'success' 这两个回调事件会被fancybox重写</td>
+</tr>
+<tr class="sep">
+<td>swf</td>
+<td>{wmode: 'transparent'}</td>
+<td>swf的设置选项</td>
+</tr>
+<tr class="even">
+<td>hideOnOverlayClick</td>
+<td>true</td>
+<td>如果为true则点击遮罩层关闭fancybox</td>
+</tr>
+<tr class="sep">
+<td>hideOnContentClick</td>
+<td>false</td>
+<td>如果为true则点击播放内容关闭fancybox</td>
+</tr>
+<tr class="even">
+<td>overlayShow</td>
+<td>true</td>
+<td>如果为true，则显示遮罩层</td>
+</tr>
+<tr>
+<td>overlayOpacity</td>
+<td>0.3</td>
+<td>遮罩层的透明度（范围0-1）</td>
+</tr>
+<tr class="sep even">
+<td>overlayColor</td>
+<td>'#666'</td>
+<td>遮罩层的背景颜色</td>
+</tr>
+<tr>
+<td>titleShow</td>
+<td>true</td>
+<td>如果为true，则显示标题</td>
+</tr>
+<tr class="even">
+<td>titlePosition</td>
+<td>'outside'</td>
+<td>设置标题显示的位置.可以设置成 'outside', 'inside' 或 'over'</td>
+</tr>
+<tr class="sep">
+<td>titleFormat</td>
+<td>null</td>
+<td>可以自定义标题的格式</td>
+</tr>
+<tr class="even">
+<td>transitionIn, transitionOut</td>
+<td>'fade'</td>
+<td>设置动画效果. 可以设置为 'elastic', 'fade' 或 'none'</td>
+</tr>
+<tr>
+<td>speedIn, speedOut</td>
+<td>300</td>
+<td>fade 和 elastic 动画切换的时间间隔, 以毫秒为单位</td>
+</tr>
+<tr class="even">
+<td>changeSpeed</td>
+<td>300</td>
+<td>切换时fancybox尺寸的变化时间间隔（即变化的速度），以毫秒为单位</td>
+</tr>
+<tr>
+<td>changeFade</td>
+<td>'fast'</td>
+<td>切换时内容淡入淡出的时间间隔（即变化的速度）</td>
+</tr>
+<tr class="sep even">
+<td>easingIn, easingOut</td>
+<td>'swing'</td>
+<td>为 elastic 动画使用 Easing</td>
+</tr>
+<tr>
+<td>showCloseButton</td>
+<td>true</td>
+<td>如果为true，则显示关闭按钮</td>
+</tr>
+<tr class="even">
+<td>showNavArrows</td>
+<td>true</td>
+<td>如果为true，则显示上一张下一张导航箭头</td>
+</tr>
+<tr class="sep">
+<td>enableEscapeButton</td>
+<td>true</td>
+<td>如果为true，则启用ESC来关闭fancybox</td>
+</tr>
+<tr class="even">
+<td>onStart</td>
+<td>null</td>
+<td>回调函数，加载内容是触发</td>
+</tr>
+<tr>
+<td>onCancel</td>
+<td>null</td>
+<td>回调函数，取消加载内容后触发</td>
+</tr>
+<tr class="even">
+<td>onComplete</td>
+<td>null</td>
+<td>回调函数，加载内容完成后触发</td>
+</tr>
+<tr>
+<td>onCleanup</td>
+<td>null</td>
+<td>回调函数，关闭fancybox前触发</td>
+</tr>
+<tr class="even">
+<td>onClosed</td>
+<td>null</td>
+<td>回调函数，关闭fancybox后触发</td>
+</tr>
+</tbody>
+</table>
+
+ 
+
+
+<h1><cufon class="cufon cufon-canvas" alt="Advanced " style="width: 130px; height: 26px;"><canvas width="148" height="29" style="width: 148px; height: 29px; top: -3px; left: -1px;"></canvas><cufontext>Advanced </cufontext></cufon><cufon class="cufon cufon-canvas" alt="options" style="width: 93px; height: 26px;"><canvas width="107" height="29" style="width: 107px; height: 29px; top: -3px; left: -1px;"></canvas><cufontext>options</cufontext></cufon></h1>
+
+<table width="100%" class="options" cellpadding="0" cellspacing="0">
+<thead>
+<tr>
+	<th width="120">Key</th>
+	<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="even">
+	<td>type</td>
+	<td>强制内容类型。可以设置为 'image', 'ajax', 'iframe', 'swf' or 'inline'</td>
+</tr>
+<tr>
+	<td>href</td>
+	<td>指定资源内容连接。</td>
+</tr>
+<tr class="even">
+	<td>title</td>
+	<td>指定标题</td>
+</tr>
+<tr>
+	<td>content</td>
+	<td>指定内容（可以是任何HTML数据）</td>
+</tr>
+<tr class="even">
+	<td>orig</td>
+	<td>设置对象和组织的绝对位置和尺寸转换为'elastic'类型。Sets object whos position and dimensions will be used by 'elastic' transition</td>
+</tr>
+<tr>
+	<td>index</td>
+	<td>自定义启动手动创建画廊指数（版本1.3.1开始支持）Custom start index of manually created gallery <small>(since 1.3.1)</small></td>
+</tr>
+</tbody>
+</table>
+
+
+<br>
+
+<h1><cufon class="cufon cufon-canvas" alt="Public " style="width: 82px; height: 26px;"><canvas width="100" height="29" style="width: 100px; height: 29px; top: -3px; left: -1px;"></canvas><cufontext>Public </cufontext></cufon><cufon class="cufon cufon-canvas" alt="Methods" style="width: 107px; height: 26px;"><canvas width="121" height="29" style="width: 121px; height: 29px; top: -3px; left: -1px;"></canvas><cufontext>Methods</cufontext></cufon></h1>
+
+<p>FancyBox provides some function to work with it</p>
+
+<table width="100%" class="options" cellpadding="0" cellspacing="0">
+<thead>
+<tr class="even">
+	<th width="150">Method</th>
+	<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+	<td>$.fancybox.showActivity</td>
+	<td>显示加载动画</td>
+</tr>
+<tr class="even">
+	<td>$.fancybox.hideActivity</td>
+	<td>隐藏加载动画</td>
+</tr>
+<tr>
+	<td>$.fancybox.next</td>
+	<td>显示下一个库项目</td>
+</tr>
+<tr class="even">
+	<td>$.fancybox.prev</td>
+	<td>显示上一个画廊项目</td>
+</tr>
+<tr>
+	<td>$.fancybox.pos</td>
+	<td>显示项目由画廊指数</td>
+</tr>
+<tr class="even">
+	<td>$.fancybox.cancel</td>
+	<td>取消加载内容</td>
+</tr>
+<tr>
+	<td>$.fancybox.close</td>
+	<td>隐藏的fancybox 。在一个iframe的使用<br><small>parent.$.fancybox.close();</small></td>
+</tr>
+<tr class="even">
+	<td>$.fancybox.resize</td>
+	<td>自动调整大小的fancybox高度匹配的内容高度</td>
+</tr>
+<tr>
+	<td>$.fancybox.center</td>
+	<td>中心的fancybox在视口中</td>
+</tr>
+</tbody>
+</table>
+			</div>
+
+			
+
+			</body></html>

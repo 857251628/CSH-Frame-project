@@ -1,0 +1,42 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link href="../images/pager.css" rel="stylesheet" type="text/css" charset="UTF-8"/>
+<title>TRSFrame</title>
+</head>
+<body>
+
+	<textarea style="width:900px; height:500px;">	
+	/*
+	 Trim v1.0.0
+	 =================================
+
+	 Infomation
+	 ----------------------
+	 Author : lipengyang
+	 E-Mail : lipengyang@trs.com.cn
+	 Date : 2014-10-24
+	 Readme:去字符串空格
+
+	 Example
+	 ----------------------
+	 pram1:	//传入字符串
+	 pram2:	//去掉字符串中所有空格(包括中间空格,需要设置第2个参数为:g)
+	 Supported in Internet Explorer, Mozilla Firefox
+	 */
+	
+	var name = ' T R S ';
+	name = TRS.Trim(name);
+	</textarea>
+	
+<script type="text/javascript"  src="../images/jquery-1.8.3.min.js" charset="UTF-8"></script>
+<script type="text/javascript" src="../images/TRS.frame-v1.0.0.js" charset="UTF-8"></script>	
+	<script type="text/javascript">
+		var name = ' T R S ';
+		name = TRS.Trim({str:name,is_global:'g'});
+		console.log(name)
+		alert(name);
+	</script>
+</body>
+</html>

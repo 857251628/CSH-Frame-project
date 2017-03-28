@@ -1,0 +1,125 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title></title>
+
+<!-- START Plugin CSS -->
+<style type="text/css">
+	html{
+		font-size:12px;	
+	}
+	.control{
+		width:600px;
+		border:1px solid #000;
+		padding:10px;
+		margin:0 auto;
+	}
+	.main_header{
+		border:1px solid blue;
+		height:100px
+	}
+	.main_body{
+		border:1px solid red;
+		height:500px
+	}
+	.main_footer{
+		border:1px solid #ccc;
+		height:100px
+	}
+	.main_header,.main_body,.main_footer{
+		margin-bottom:5px;
+	}
+	.content{
+		width:102px;
+		margin:10px auto;
+		overflow:hidden;
+		border:1px solid green;
+	}
+	
+	.star_level {
+		margin-left: 85px;
+		line-height: 30px;
+		color: #909090;
+	}
+	
+	.star_level .star{
+		width: 135px;
+		height: 30px;
+		float: left;
+		display: inline;
+	}
+	.star_level .star_num {
+		background-image: url(nr_star_20s.png);
+		_background-image: url(nr_star_20s@ie6.png);
+		background-repeat: no-repeat;
+		height: 0;
+		overflow: hidden;
+		width: 116px;
+		padding: 20px 2px 0;
+		display: inline-block;
+		vertical-align: middle;
+	}
+	
+	.star_level .star_num a{
+		width: 19.3%;
+		height: 0;
+		overflow: hidden;
+		margin: 0;
+		padding-top: 20px;
+		float: left;
+		display: inline;
+		cursor: pointer;
+		position: relative;
+		top: -20px;
+	}
+</style>
+<!-- END Plugin CSS -->
+
+</head>
+<body>
+	<div class="control js_control">
+		<!-- START header -->
+		<div class="main_header" >
+			header
+		</div>
+		<!-- END header -->
+		<!-- START body -->
+		<div class="main_body">
+			<div class="star_level" id="js_star_level">
+				<div class="star">
+					<input type="hidden" class="dataStr" data-sr_t1="1颗星 这个产品不太好用。" data-sr_t2="2颗星 这个产品一般，没什么出彩的地方。" data-sr_t3="3颗星 这个产品物有所值。" data-sr_t4="4颗星 这个产品物超所值，值得推荐。" data-sr_t5="5颗星 这个产品太棒了，我非常喜欢" />
+					<span class="star_num">
+						<a href="javascript:;" id="1">1</a>
+						<a href="javascript:;" id="2">2</a>
+						<a href="javascript:;" id="3">3</a>
+						<a href="javascript:;" id="4">4</a>
+						<a href="javascript:;" id="5">5</a>
+					</span>
+				</div>
+				<div class="str" star_id="1"></div>
+			</div>
+		</div>
+		<!-- END body -->
+		<!-- START footer -->
+		<div class="main_footer">
+			footer
+		</div>
+		<!-- END footer -->
+	</div>
+	
+	<!-- START Public JS -->
+		<script type="text/javascript" src="../images/jquery-1.8.3.min.js"></script>
+		<script type="text/javascript" src="../images/TRS.frame-v1.0.0.js" charset="UTF-8"></script>
+
+	<!-- END Public JS -->
+	<!-- START Plugin JS -->
+		<script type="text/javascript"> 
+			TRS.starLevel({
+				param		: $('#js_star_level'),	//选择器
+				starHeight	: 30	//滚动图片高度
+			})
+		</script>
+	<!-- END Plugin JS -->
+</body>
+</html>

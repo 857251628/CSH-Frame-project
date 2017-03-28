@@ -1,0 +1,351 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+</head>
+<style type="text/css">
+.page a{
+	display: block;
+	border: 1px solid #ccc;
+	float: left;
+	width: 30px;
+	height: 30px;
+	text-align: center;
+	line-height: 29px;
+	color: #000;
+	text-decoration: initial;
+	margin: 0 1px;
+}
+.page .disable {
+    color:#FF0000;
+    font-weight:bold;
+	width: 70px;
+}
+.page .classPage{
+	width: 70px;
+}
+.page .active {
+    color:#00F;
+    font-weight:bold;
+}
+</style>
+<script type="text/javascript" charset="utf-8" src="http://image.haier.com/cn/images/jquery-1.8.2.min.js"></script>
+<script type="text/javascript">
+	
+	
+	
+	var getPage = function(obj){
+		var $this = this;
+		this._createPage = function (obj){
+			var total_page = parseInt( obj.pageCount );	//总页数
+			var current_page = parseInt( obj.pageIndex );	//当前页数
+			var pager_length = obj.pageLength;    //不包next 和 prev 必须为奇数
+			var pager = new Array( pager_length );
+			var header_length = obj.headerKeep; 		//头部预留页码
+			var tailer_length = obj.footerKeep;		//尾部预留页码
+			//header_length + tailer_length 必须为偶数
+			var main_length = pager_length - header_length - tailer_length; //必须为奇数
+			var tagStr = obj.tagStr;		
+			var classStr = obj.classStr;
+			var idStr = obj.idStr;
+			var nameStr = obj.nameStr;
+			var disable_class = obj.disable;
+			var select_class = obj.active;
+			var i;
+			var code = '';
+			var numRel = '';
+			
+			if( total_page < current_page ){
+				alert('总页数不能小于当前页数');
+				return false;    
+			}   
+			//判断总页数是不是小于 分页的长度，若小于则直接显示
+			if( total_page < pager_length ){
+				for(i = 0; i < total_page; i++){
+					code += (i+1 != current_page) ? $this.createTag({tagStr:tagStr,classStr:classStr,idStr:idStr,nameStr:nameStr,a_html:i+1}) : $this.createTag({tagStr:tagStr,classStr:select_class,idStr:idStr,nameStr:nameStr,a_html:i+1});
+				}
+			}else{//如果总页数大于分页长度，则为一下函数
+				//先计算中心偏移量
+				var offset = ( pager_length - 1) / 2;
+				//分三种情况，第一种左边没有...
+				if( current_page <= offset + 1){
+					var tailer = '';
+					//前header_length + main_length 个直接输出之后加一个...然后输出倒数的    tailer_length 个
+					for( i = 0; i < header_length + main_length; i ++){
+						code += (i+1 != current_page) ? $this.createTag({tagStr:tagStr,classStr:classStr,idStr:idStr,nameStr:nameStr,a_html:i+1}) : $this.createTag({tagStr:tagStr,classStr:select_class,idStr:idStr,nameStr:nameStr,a_html:i+1});
+					}
+					code += $this.createTag({tagStr:tagStr,classStr:classStr,idStr:idStr,nameStr:nameStr,a_html:'...'});
+					for(i = total_page; i > total_page - tailer_length; i --){
+						tailer = $this.createTag({tagStr:tagStr,classStr:classStr,idStr:idStr,nameStr:nameStr,a_html:i}) + tailer;
+					}
+					code += tailer;
+				} else if( current_page >= total_page - offset ){//第二种情况是右边没有...
+					var header = '';
+					//后tailer_length + main_length 个直接输出之前加一个...然后拼接 最前面的 header_length 个
+					for( i = total_page; i >= total_page-main_length - 1; i --){
+						code = (( current_page != i ) ? $this.createTag({tagStr:tagStr,classStr:classStr,idStr:idStr,nameStr:nameStr,a_html:i}) : $this.createTag({tagStr:tagStr,classStr:select_class,idStr:idStr,nameStr:nameStr,a_html:i})) + code;
+					}
+					code = $this.createTag({tagStr:tagStr,classStr:classStr,idStr:idStr,nameStr:nameStr,a_html:'...'}) + code;
+					for( i = 0; i < header_length ; i++){
+						header += $this.createTag({tagStr:tagStr,classStr:classStr,idStr:idStr,nameStr:nameStr,a_html:i+1});
+					}
+					code = header + code;
+				}else{ //最后一种情况，两边都有...
+					var header = '';
+					var tailer = '';
+					//首先处理头部
+					for( i = 0; i < header_length; i ++){
+						header += $this.createTag({tagStr:tagStr,classStr:classStr,idStr:idStr,nameStr:nameStr,a_html:i+1});
+					}
+					header += $this.createTag({tagStr:tagStr,classStr:classStr,idStr:idStr,nameStr:nameStr,a_html:'...'});
+					//处理尾巴
+					for(i = total_page; i > total_page - tailer_length; i --){
+						tailer = $this.createTag({tagStr:tagStr,classStr:classStr,idStr:idStr,nameStr:nameStr,a_html:i}) + tailer;
+					}
+					tailer = $this.createTag({tagStr:tagStr,classStr:classStr,idStr:idStr,nameStr:nameStr,a_html:'...'}) + tailer;
+					//处理中间
+					//计算main的中心点
+					var offset_m = ( main_length - 1 ) / 2;
+					var partA = '';
+					var partB = '';
+					var j;
+					var counter = (parseInt(current_page) + parseInt(offset_m));
+					for(i = j = current_page ; i <= counter; i ++, j --){
+						partA = (( i == j ) ? '' : $this.createTag({tagStr:tagStr,classStr:classStr,idStr:idStr,nameStr:nameStr,a_html:j})) + partA;
+						partB += ( i == j ) ? $this.createTag({tagStr:tagStr,classStr:select_class,idStr:idStr,nameStr:nameStr,a_html:i}) : $this.createTag({tagStr:tagStr,classStr:classStr,idStr:idStr,nameStr:nameStr,a_html:i});
+					}
+					//拼接
+					code = header + partA + partB + tailer; 
+				}
+			}
+			
+			var prev = ( current_page == 1 ) ? $this.createTag({tagStr:tagStr,classStr:disable_class,idStr:idStr,nameStr:nameStr,a_html:obj.prevName,classPage:obj.classPage}) : $this.createTag({tagStr:tagStr,classStr:classStr,idStr:idStr,nameStr:nameStr,a_html:obj.prevName,classPage:obj.classPage});
+			if(1 != current_page){
+				prev = ( current_page == 1 ) ? $this.createTag({tagStr:tagStr,classStr:disable_class,idStr:idStr,nameStr:nameStr,a_html:obj.prevName,pageIndex:current_page,classPage:obj.classPage}) : $this.createTag({tagStr:tagStr,classStr:classStr,idStr:idStr,nameStr:nameStr,a_html:obj.prevName,pageIndex:(current_page - 1),classPage:obj.classPage});
+			}
+			var next = ( current_page == total_page ) ? $this.createTag({tagStr:tagStr,classStr:disable_class,idStr:idStr,nameStr:nameStr,a_html:obj.nextName,classPage:obj.classPage}) : $this.createTag({tagStr:tagStr,classStr:classStr,idStr:idStr,nameStr:nameStr,a_html:obj.nextName,classPage:obj.classPage});
+			if(obj.pageCount != current_page){
+				next = ( current_page == total_page ) ? $this.createTag({tagStr:tagStr,classStr:disable_class,idStr:idStr,nameStr:nameStr,a_html:obj.nextName,pageIndex:current_page,classPage:obj.classPage}) : $this.createTag({tagStr:tagStr,classStr:classStr,idStr:idStr,nameStr:nameStr,a_html:obj.nextName,pageIndex:(current_page + 1),classPage:obj.classPage});
+			}
+			code = prev + code + next;
+			return code;
+			
+		}
+		/**
+		 * 计算分页URL值
+		 */
+		this._makeUrl = function(obj) {
+			var _dataUrl = obj.dataUrl;
+			var _pageIndex = obj.pageIndex-1;
+			_dataUrl = _dataUrl.replace(".xml", '_' + _pageIndex + '.xml');
+			if( _pageIndex >0){
+				_dataUrl = _dataUrl.replace(_dataUrl.substring(_dataUrl.lastIndexOf("_")), '_' + _pageIndex + '.xml');
+			}else{
+				_dataUrl = _dataUrl.replace(_dataUrl.substring(_dataUrl.lastIndexOf("_")),'.xml');
+			}
+			return _dataUrl;
+		}
+		/**
+		* 	数据的填充
+		*/
+		this._showData = function (obj){
+			var $pageData = $(obj.pageData);
+			$pageData.html("")
+			for(var i = 0 ;i < xmlData.length ;i++){
+				var strHTML = obj.ajaxData(xmlData[i]);
+				$pageData.append(strHTML);
+			}
+		}
+		/**
+		*	请求数据
+		*/
+		this._getData = function(obj) {
+			$.ajax({
+				type: obj.ajaxType,
+				dataType: obj.ajaxDataType,
+				url: $this._makeUrl(obj),
+				cache: false,
+				async: false,
+				success: function (xml){
+					xmlData = $(xml).find("item");
+					obj.pageIndex = $(xml).find("pageIndex").text();
+					obj.pageCount = $(xml).find("pageCount").text();
+					$this._showData(obj);
+				},
+				error: function (xml) {
+					xmlData = null;
+				}
+			});
+		}
+		//创建标签
+		this.createTag = function(obj){
+			classStr = (obj.classStr == '') ? '' : ' class="' + obj.classStr + '"';
+			idStr = (obj.idStr == '') ? '' : ' id="' + obj.idStr + '"';
+			nameStr = (obj.nameStr == '') ? '' : ' name="' + obj.nameStr + '"';
+			if(!isNaN(obj.a_html)){
+				numRel = 'page="'+ obj.a_html +'"';
+			}else{
+				numRel = '';
+			}
+			var code = '';
+			//判断是否上一页下一页
+			if( obj.pageIndex != undefined){ 	
+				numRel = 'page="'+ obj.pageIndex +'"';
+				var classPage = ' class="'+ obj.classPage +'"';
+				if(obj.tagStr == 'a'){
+					code = '<' + obj.tagStr + classPage + idStr + numRel + nameStr+' href="javascript:;">' + obj.a_html + '</' + obj.tagStr + '>';
+				}else{
+					code = '<' + obj.tagStr + classPage + idStr + numRel + nameStr + ' >' + obj.a_html + '</' + obj.tagStr + '>';
+				}
+			}else{
+				if(obj.tagStr == 'a'){
+					code = '<' + obj.tagStr + classStr + idStr + numRel + nameStr+' href="javascript:;">' + obj.a_html + '</' + obj.tagStr + '>';
+				}else{
+					code = '<' + obj.tagStr + classStr + idStr + numRel + nameStr + ' >' + obj.a_html + '</' + obj.tagStr + '>';
+				}
+			}
+			return code;
+		}
+		if(obj.pageType == "WCM"){
+			$this._getData(obj);
+		}else{
+			var results = obj.ajaxData();
+			if(results != null){
+				obj.pageIndex = results.pageIndex;
+				obj.pageCount = results.pageCount;
+			}
+		}
+		var pageStr = $this._createPage(obj);
+		if(pageStr){
+			var $page = $(obj.pageId);
+			$page.html(pageStr);
+			//绑定点击事件
+			$page.delegate(obj.tagStr,'click',function(){
+				var $then = $(this);
+				var page = $then.attr("page");
+				if(page != undefined && !$then.hasClass(obj.active)){
+					obj.pageIndex = page;
+					pageStr = $this._createPage(obj);
+					if(pageStr){
+						$page.html(pageStr);
+					}
+					if(obj.pageType == "WCM"){
+						$this._getData(obj);
+					}else{
+						var results = {"pageIndex":obj.pageIndex,"pageCount":obj.pageCount};
+						obj.ajaxData(results);
+					}
+				}
+			});
+		}
+		
+	}
+	
+	
+</script>
+
+
+WCM使用分页
+<div><ul id="js_data"></ul></div>
+<br />
+<div class="page" id="js_page"></div>
+<br /><br />
+<hr />
+
+<script type="text/javascript">
+
+	//加载数据样式
+	function insertItem(data) {
+		return "<li><a href=\""+$(data).attr('url')+"\" title=\""+$(data).attr('title')+"\" target=\"_blank\">"+$(data).attr('title')+"</a></li>";
+	}
+
+	getPage({
+		pageId:'#js_page',	//分页输出ID选择器
+		pageData:'#js_data',	//数据输出选择器
+		headerKeep:1,		//头部预留页码数量 headerKeep + footerKeep 必须为偶数
+		footerKeep:1,		//尾部预留页码数量 headerKeep + footerKeep 必须为偶数
+		pageLength:7,		//页码显示数量,必须为奇数
+		tagStr:'a',			//使用标签
+		classStr:'classStr',//标签class
+		idStr:'idStr',		//标签id
+		nameStr:'nameStr',	//标签name
+		disable:'disable',	//不能点击class
+		active:'active',	//标签选中class
+		prevName:'上一页',	
+		nextName:'下一页',
+		classPage:'classPage',//上下页class
+		pageType:'WCM',		//分页类型
+		ajaxData:insertItem,//异步请求
+		ajaxType:'get',		//请求类型
+		ajaxDataType:'xml',	//数据类型
+		dataUrl:'data/data.xml',//数据URL
+		expand:''			//扩展插件
+	});
+    
+
+</script>
+
+互动APP使用分页
+<div><ul id="js_data3"></ul></div><br />
+<div class="page" id="js_page3"></div><br /><br />
+<script type="text/javascript">
+	/**
+		Example
+		----------------------
+		pageIndex:	//当前分页数量
+		dataUrl:		//XML数据URL
+		pageId:		//分页输入选择器
+		pageData: 	//数据输入选择器
+		ajaxData:		//应用ajax请求数据分页样式扩展,设置pageType值APP生效
+		pageType:		//分页类型 可选值： WCM、 APP，WCM：用于WCM分页、APP：用于互动应用类型分页
+	**/
+	//互动请求数据
+	var ajaxData = function($this){
+		/**
+			pageIndex: 当前页码
+			pageCount：共多少页码
+		*/
+		var results = {"pageIndex":"1","pageCount":"20"};	//APP接口返回的数据
+		var $js_data = $("#js_data3");
+		if($this != undefined){
+			$js_data.html("当前第"+ $this.pageIndex +"页，一共页"+$this.pageCount+"数据");
+		}else{
+			if(results.pageIndex == 1 ){
+				$js_data.html("当前第"+ results.pageIndex +"页，一共页"+ results.pageCount+"数据");
+			}
+		}
+		if(results != null){
+			return results;
+		}else{
+			return null;
+		}
+		
+	}
+	//调用分页
+	getPage({
+		pageId:'#js_page3',	//分页输出ID选择器
+		pageData:'#js_data3',	//数据输出选择器
+		headerKeep:1,		//头部预留页码数量 headerKeep + footerKeep 必须为偶数
+		footerKeep:1,		//尾部预留页码数量 headerKeep + footerKeep 必须为偶数
+		pageLength:7,		//页码显示数量,必须为奇数
+		tagStr:'a',			//使用标签
+		classStr:'classStr',//标签class
+		idStr:'idStr',		//标签id
+		nameStr:'nameStr',	//标签name
+		disable:'disable',	//不能点击class
+		active:'active',	//标签选中class
+		prevName:'上一页',	
+		nextName:'下一页',
+		classPage:'classPage',//上下页class
+		pageType:'APP',		//分页类型
+		ajaxData:ajaxData//异步请求
+	});
+    
+</script>
+
+
+
+<body>
+</body>
+</html>

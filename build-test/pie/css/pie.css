@@ -1,0 +1,72 @@
+html{
+		font-size:12px;	
+	}
+	.control{
+		width:600px;
+		border:1px solid #000;
+		padding:10px;
+		margin:0 auto;
+	}
+	.main_header{
+		border:1px solid blue;
+		height:100px
+	}
+	.main_body{
+		border:1px solid red;
+		height:500px
+	}
+	.main_footer{
+		border:1px solid #ccc;
+		height:100px
+	}
+	.main_header,.main_body,.main_footer{
+		margin-bottom:5px;
+	}
+	.content{
+		margin-left:200px;
+		width: 200px;
+		height:120px;
+		overflow:hidden;
+		border: 1px solid #696;
+		-webkit-border-radius: 28px;
+		-moz-border-radius: 28px;
+		border-radius: 28px;
+		-webkit-box-shadow: #666 0px 2px 3px;
+		-moz-box-shadow: #666 0px 2px 3px;
+		box-shadow: #666 0px 2px 3px;
+		background: #EEFF99;
+		background: -webkit-gradient(linear, 0 0, 0 bottom, from(#EEFF99), to(#66EE33));
+		background: -webkit-linear-gradient(#EEFF99, #66EE33);
+		background: -moz-linear-gradient(#EEFF99, #66EE33);
+		background: -ms-linear-gradient(#EEFF99, #66EE33);
+		background: -o-linear-gradient(#EEFF99, #66EE33);
+		background: linear-gradient(#EEFF99, #66EE33);
+		-pie-background: linear-gradient(#EEFF99, #66EE33); 
+		behavior: url(css/PIE.htc);
+	}
+	
+	:root .inner_con{
+		width:200px;
+		height:120px;
+		filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#EEFF99, endColorstr=#66EE33, GradientType=0);
+		behavior: url(css/PIE.htc);
+	}
+	
+	
+	.button { 
+		display:block;
+		float:left;
+		background: #32BEFF; 
+		padding: 5px 10px; 
+		-webkit-border-radius: 6px; 
+		-moz-border-radius: 6px; 
+		border-radius: 6px; 
+		color: white; 
+		font-size: 14px; 
+		font-family: Georgia, serif; 
+		text-decoration: none;
+		vertical-align: middle;
+		behavior: url(css/PIE.htc);
+	} 
+	.button:hover { border-top-color: #28597a; background: #28597a; color: #ccc; } 
+	.button:active { border-top-color: #1b435e; background: #1b435e; }

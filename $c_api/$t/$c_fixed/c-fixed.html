@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<style>
+    body {
+        width: 2560px;
+        height: 1600px;
+        background:url("timg.jpg") no-repeat ;
+    }
+
+    div {
+        width: 100px;
+        height:100px;
+        background-color: red;
+    }
+
+    .top-left{
+        background-color: blue;
+    }
+</style>
+<script src="../../../$c_global_entrance.js"></script>
+<body>
+<div id="js_top-left" class="top-left">1</div>
+<div id="js_top-right" class="top-right">2</div>
+<div id="js_bottom-left" class="bottom-left">3</div>
+<div id="js_bottom-right" class="bottom-right">4</div>
+<div id="js_center-middle" class="bottom-right">5</div>
+<script>
+    $c.$t_fixed($("#js_top-left"),"top","left");
+    $c.$t_fixed($("#js_top-right"),"top","right");
+    $c.$t_fixed($("#js_bottom-left"),"bottom","left");
+    $c.$t_fixed($("#js_bottom-right"),"bottom","right");
+    $c.$t_fixed($("#js_center-middle"),"center","middle");
+
+
+
+    $c.$t_fixed($("#js_bottom-right"),"-10","-100");
+</script>
+</body>
+</html>

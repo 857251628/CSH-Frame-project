@@ -1,0 +1,158 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<link href="css/pager.css" rel="stylesheet" type="text/css" />
+<title>WCM 模板分页</title>
+<script src="../images/jquery-1.8.3.min.js" charset="UTF-8"></script>
+<script type="text/javascript" src="../images/TRS.frame-v1.0.0.js" charset="UTF-8"></script>
+<style type="text/css">
+.page a{
+	display: block;
+	border: 1px solid #ccc;
+	float: left;
+	width: 30px;
+	height: 30px;
+	text-align: center;
+	line-height: 29px;
+	color: #000;
+	text-decoration: initial;
+	margin: 0 1px;
+}
+.page .disable {
+    color:#FF0000;
+    font-weight:bold;
+	width: 70px;
+}
+.page .classPage{
+	width: 70px;
+}
+.page .active {
+    color:#00F;
+    font-weight:bold;
+}
+</style>
+
+
+</head>
+<body>
+
+WCM使用分页
+<div><ul id="js_data"></ul></div>
+<br />
+<div class="page" id="js_page"></div>
+<br /><br />
+<hr />
+
+<script type="text/javascript">
+
+	//加载数据样式
+	function insertItem(data) {
+		return "<li><a href=\""+$(data).attr('url')+"\" title=\""+$(data).attr('title')+"\" target=\"_blank\">"+$(data).attr('title')+"</a></li>";
+	}
+
+	TRS.Page({
+		pageId:'#js_page',	//分页输出ID选择器
+		pageData:'#js_data',	//数据输出选择器
+		headerKeep:1,		//头部预留页码数量 headerKeep + footerKeep 必须为偶数
+		footerKeep:1,		//尾部预留页码数量 headerKeep + footerKeep 必须为偶数
+		pageLength:7,		//页码显示数量,必须为奇数
+		tagStr:'a',			//使用标签
+		classStr:'classStr',//标签class
+		idStr:'idStr',		//标签id
+		nameStr:'nameStr',	//标签name
+		disable:'disable',	//不能点击class
+		active:'active',	//标签选中class
+		prevName:'上一页',	
+		nextName:'下一页',
+		classPage:'classPage',//上下页class
+		pageType:'WCM',		//分页类型
+		ajaxData:insertItem,//异步请求
+		ajaxType:'get',		//请求类型
+		ajaxDataType:'xml',	//数据类型
+		dataUrl:'data/data.xml'//数据URL
+	});
+    
+
+</script>
+
+互动APP使用分页
+<div><ul id="js_data3"></ul></div><br />
+<div class="page" id="js_page3"></div><br /><br />
+<script type="text/javascript">
+	/**
+		Example
+		----------------------
+		pageIndex:	//当前分页数量
+		dataUrl:		//XML数据URL
+		pageId:		//分页输入选择器
+		pageData: 	//数据输入选择器
+		ajaxData:		//应用ajax请求数据分页样式扩展,设置pageType值APP生效
+		pageType:		//分页类型 可选值： WCM、 APP，WCM：用于WCM分页、APP：用于互动应用类型分页
+	**/
+	//互动请求数据
+	var ajaxData = function($this){
+		/**
+			pageIndex: 当前页码
+			pageCount：共多少页码
+		*/
+		var results = {"pageIndex":"1","pageCount":"20"};	//APP接口返回的数据
+		var $js_data = $("#js_data3");
+		if($this != undefined){
+			$js_data.html("当前第"+ $this.pageIndex +"页，一共页"+$this.pageCount+"数据");
+		}else{
+			if(results.pageIndex == 1 ){
+				$js_data.html("当前第"+ results.pageIndex +"页，一共页"+ results.pageCount+"数据");
+			}
+		}
+		if(results != null){
+			return results;
+		}else{
+			return null;
+		}
+		
+	}
+	//调用分页
+	TRS.Page({ 
+		pageId:'#js_page3',	//分页输出ID选择器
+		pageData:'#js_data3',	//数据输出选择器
+		headerKeep:1,		//头部预留页码数量 headerKeep + footerKeep 必须为偶数
+		footerKeep:1,		//尾部预留页码数量 headerKeep + footerKeep 必须为偶数
+		pageLength:7,		//页码显示数量,必须为奇数
+		tagStr:'a',			//使用标签
+		classStr:'classStr',//标签class
+		idStr:'idStr',		//标签id
+		nameStr:'nameStr',	//标签name
+		disable:'disable',	//不能点击class
+		active:'active',	//标签选中class
+		prevName:'上一页',	
+		nextName:'下一页',
+		classPage:'classPage',//上下页class
+		pageType:'APP',		//分页类型
+		ajaxData:ajaxData//异步请求
+	});
+    
+</script>
+
+
+<br /><br />
+<hr />
+<div>
+对WCM分页进行了，优化更新，采用xml实现了无刷新分页，考虑到有可能数据过多xml文件过大，采用多xml实现。<br />
+它的好处如下：分页只生成了xml，而不用生成整个HTML页面，节省了服务器空间，实现无刷新分页，提升了用户体验。<br />
+模板中填写下列代码，发布文件名:data，文件扩展名:xml。<br />
+<textarea style="width:900px; height:200px;">
+<?xml version="1.0" encoding="UTF-8"?>
+<comment>
+	<pageCount>${PAGE_COUNT}</pageCount>
+	<recordCount>${RECORD_COUNT}</recordCount>
+	<items>
+		<TRS_DOCUMENTS ID='OWNER' PAGESIZE='4'><item url="<TRS_DOCUMENT FIELD='_RECURL' URLISABS='TRUE' AUTOLINK='TRUE' />" title="<TRS_DOCUMENT AUTOLINK='FALSE' />" ><![CDATA[<TRS_DOCUMENT NUM='50' AUTOLINK='FALSE' />]]></item></TRS_DOCUMENTS>
+	</items>
+</comment>
+
+</textarea>
+</div>
+</body>
+</html>
